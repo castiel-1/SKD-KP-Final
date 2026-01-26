@@ -4,6 +4,7 @@ public class TextureRotator : MonoBehaviour
 {
     public float rotationSpeed = 2.0f;
     private Renderer rend;
+    Material[] mats;
     private float currentRotation = 0f;
 
     public Texture2D[] textureList;
@@ -12,6 +13,7 @@ public class TextureRotator : MonoBehaviour
     void Start()
     {
         rend = GetComponent<Renderer>();
+        mats = rend.materials;
         UpdateTexture();
     }
 
@@ -20,12 +22,12 @@ public class TextureRotator : MonoBehaviour
         if (Input.GetKey(KeyCode.Q))
         {
             currentRotation += rotationSpeed * Time.deltaTime;
-            rend.material.SetFloat("_Rotation", currentRotation);
+            mats[1].SetFloat("_Rotation", currentRotation);
         }
         if (Input.GetKey(KeyCode.E))
         {
             currentRotation -= rotationSpeed * Time.deltaTime;
-            rend.material.SetFloat("_Rotation", currentRotation);
+            mats[1].SetFloat("_Rotation", currentRotation);
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -52,7 +54,7 @@ public class TextureRotator : MonoBehaviour
     {
         if (textureList.Length > 0 )
         {
-            rend.material.SetTexture("_MainTex", textureList[currentTextureIndex]);
+            mats[1].SetTexture("_MainTex", textureList[currentTextureIndex]);
         }
     }
 }
