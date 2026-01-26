@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.XR;
 
 public class TextureRotator : MonoBehaviour
 {
@@ -10,21 +11,39 @@ public class TextureRotator : MonoBehaviour
     public Texture2D[] textureList;
     private int currentTextureIndex = 0;
 
+    InputDevice leftHand;
+    InputDevice rightHand;
+
     void Start()
     {
         rend = GetComponent<Renderer>();
         mats = rend.materials;
+
+        leftHand = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
+        rightHand = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+
         UpdateTexture();
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Q))
+        // get controllers again if they get disconnected or turned off while running
+        if (!leftHand.isValid)
+            leftHand = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
+
+        if (!rightHand.isValid)
+            rightHand = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+
+        // rotation
+        bool pressedLeft;
+        if (leftHand.TryGetFeatureValue(CommonUsages.primaryButton, out pressedLeft) && pressedLeft)
         {
             currentRotation += rotationSpeed * Time.deltaTime;
             mats[1].SetFloat("_Rotation", currentRotation);
         }
-        if (Input.GetKey(KeyCode.E))
+
+        bool pressedRight;
+        if (rightHand.TryGetFeatureValue(CommonUsages.primaryButton, out pressedRight) && pressedRight)
         {
             currentRotation -= rotationSpeed * Time.deltaTime;
             mats[1].SetFloat("_Rotation", currentRotation);
