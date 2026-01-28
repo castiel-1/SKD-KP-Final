@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "MonitorSetup", menuName = "Scriptable Objects/MonitorSetup")]
 public class MonitorSetup : ScriptableObject
