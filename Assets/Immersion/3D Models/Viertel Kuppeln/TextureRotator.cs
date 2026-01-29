@@ -1,77 +1,80 @@
 using UnityEngine;
-using UnityEngine.XR;
+using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class TextureRotator : MonoBehaviour
 {
+    [Header("Rotation Settings (Hold A/X)")]
     public float rotationSpeed = 2.0f;
-    private Renderer rend;
-    Material[] mats;
-    private float currentRotation = 0f;
+    public InputActionProperty leftPrimaryAction;  // Map to X
+    public InputActionProperty rightPrimaryAction; // Map to A
 
+    [Header("Texture Settings (Click B/Y)")]
+    public InputActionProperty leftSecondaryAction;  // Map to Y
+    public InputActionProperty rightSecondaryAction; // Map to B
     public Texture2D[] textureList;
+    
+    private Renderer rend;
+    private Material[] mats;
+    private float currentRotation = 0f;
     private int currentTextureIndex = 0;
-
-    InputDevice leftHand;
-    InputDevice rightHand;
 
     void Start()
     {
         rend = GetComponent<Renderer>();
         mats = rend.materials;
 
-        leftHand = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
-        rightHand = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+        // Subscribe to Secondary buttons for the one-click texture swap
+        leftSecondaryAction.action.performed += OnLeftSecondaryClick;
+        rightSecondaryAction.action.performed += OnRightSecondaryClick;
 
         UpdateTexture();
     }
 
+    void OnDestroy()
+    {
+        // Clean up subscriptions
+        leftSecondaryAction.action.performed -= OnLeftSecondaryClick;
+        rightSecondaryAction.action.performed -= OnRightSecondaryClick;
+    }
+
     void Update()
     {
-        // get controllers again if they get disconnected or turned off while running
-        if (!leftHand.isValid)
-            leftHand = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
+        HandleRotation();
+    }
 
-        if (!rightHand.isValid)
-            rightHand = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
-
-        // rotation
-        bool pressedLeft;
-        if (leftHand.TryGetFeatureValue(CommonUsages.primaryButton, out pressedLeft) && pressedLeft)
+    private void HandleRotation()
+    {
+        // Continuous check: While button is held down
+        if (leftPrimaryAction.action.IsPressed())
         {
             currentRotation += rotationSpeed * Time.deltaTime;
             mats[1].SetFloat("_Rotation", currentRotation);
         }
 
-        bool pressedRight;
-        if (rightHand.TryGetFeatureValue(CommonUsages.primaryButton, out pressedRight) && pressedRight)
+        if (rightPrimaryAction.action.IsPressed())
         {
             currentRotation -= rotationSpeed * Time.deltaTime;
             mats[1].SetFloat("_Rotation", currentRotation);
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            ChangeTexture(1);
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            ChangeTexture(-1);
-        }
     }
+
+    // These trigger only ONCE per press
+    private void OnLeftSecondaryClick(InputAction.CallbackContext context) => ChangeTexture(-1);
+    private void OnRightSecondaryClick(InputAction.CallbackContext context) => ChangeTexture(1);
 
     void ChangeTexture(int step)
     {
         if (textureList.Length > 0)
         {
-            currentTextureIndex += step;
-            if (currentTextureIndex >= textureList.Length) currentTextureIndex = 0;
-            if (currentTextureIndex < 0) currentTextureIndex = textureList.Length - 1;
+            currentTextureIndex = (currentTextureIndex + step + textureList.Length) % textureList.Length;
             UpdateTexture();
         }
     }
 
     void UpdateTexture()
     {
-        if (textureList.Length > 0 )
+        if (textureList.Length > 0 && mats.Length > 1)
         {
             mats[1].SetTexture("_MainTex", textureList[currentTextureIndex]);
         }
