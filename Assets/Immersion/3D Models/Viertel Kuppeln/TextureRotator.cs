@@ -1,17 +1,9 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR;
 
 public class TextureRotator : MonoBehaviour
 {
-    [Header("Rotation Settings (Hold A/X)")]
     public float rotationSpeed = 2.0f;
-    public InputActionProperty leftPrimaryAction;  // Map to X
-    public InputActionProperty rightPrimaryAction; // Map to A
-
-    [Header("Texture Settings (Click B/Y)")]
-    public InputActionProperty leftSecondaryAction;  // Map to Y
-    public InputActionProperty rightSecondaryAction; // Map to B
     public Texture2D[] textureList;
     
     private Renderer rend;
@@ -29,35 +21,33 @@ public class TextureRotator : MonoBehaviour
         rend = GetComponent<Renderer>();
         mats = rend.materials;
 
-        // Subscribe to Secondary buttons for the one-click texture swap
-        leftSecondaryAction.action.performed += OnLeftSecondaryClick;
-        rightSecondaryAction.action.performed += OnRightSecondaryClick;
+        leftHand = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
+        rightHand = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
 
         UpdateTexture();
     }
 
-    void OnDestroy()
-    {
-        // Clean up subscriptions
-        leftSecondaryAction.action.performed -= OnLeftSecondaryClick;
-        rightSecondaryAction.action.performed -= OnRightSecondaryClick;
-    }
-
     void Update()
     {
-        HandleRotation();
-    }
+        if (!leftHand.isValid)
+        {
+            leftHand = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
+        }
 
-    private void HandleRotation()
-    {
-        // Continuous check: While button is held down
-        if (leftPrimaryAction.action.IsPressed())
+        if (!rightHand.isValid)
+        {
+            rightHand = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+        }
+
+        bool pressedLeft;
+        if (leftHand.TryGetFeatureValue(CommonUsages.primaryButton, out pressedLeft) && pressedLeft)
         {
             currentRotation += rotationSpeed * Time.deltaTime;
             mats[1].SetFloat("_Rotation", currentRotation);
         }
 
-        if (rightPrimaryAction.action.IsPressed())
+        bool pressedRight;
+        if (rightHand.TryGetFeatureValue(CommonUsages.primaryButton, out pressedRight) && pressedRight)
         {
             currentRotation -= rotationSpeed * Time.deltaTime;
             mats[1].SetFloat("_Rotation", currentRotation);
@@ -82,10 +72,6 @@ public class TextureRotator : MonoBehaviour
             wasLeftSecondaryPressedLastFrame = pressedLeftNow;
         }
     }
-
-    // These trigger only ONCE per press
-    private void OnLeftSecondaryClick(InputAction.CallbackContext context) => ChangeTexture(-1);
-    private void OnRightSecondaryClick(InputAction.CallbackContext context) => ChangeTexture(1);
 
     void ChangeTexture(int step)
     {
