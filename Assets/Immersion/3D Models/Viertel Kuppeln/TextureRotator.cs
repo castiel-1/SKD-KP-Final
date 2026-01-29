@@ -13,6 +13,8 @@ public class TextureRotator : MonoBehaviour
 
     InputDevice leftHand;
     InputDevice rightHand;
+    private bool wasRightSecondaryPressedLastFrame = false;
+    private bool wasLeftSecondaryPressedLastFrame = false;
 
     void Start()
     {
@@ -48,13 +50,24 @@ public class TextureRotator : MonoBehaviour
             currentRotation -= rotationSpeed * Time.deltaTime;
             mats[1].SetFloat("_Rotation", currentRotation);
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+
+        bool pressedRightNow;
+        bool pressedLeftNow;
+        if (rightHand.TryGetFeatureValue(CommonUsages.secondaryButton, out pressedRightNow))
         {
-            ChangeTexture(1);
+            if (pressedRightNow && !wasRightSecondaryPressedLastFrame)
+            {
+                ChangeTexture(1);
+            }
+            wasRightSecondaryPressedLastFrame = pressedRightNow;
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (leftHand.TryGetFeatureValue(CommonUsages.secondaryButton, out pressedLeftNow))
         {
-            ChangeTexture(-1);
+            if (pressedLeftNow && !wasLeftSecondaryPressedLastFrame)
+            {
+                ChangeTexture(-1);
+            }
+            wasLeftSecondaryPressedLastFrame = pressedLeftNow;
         }
     }
 
