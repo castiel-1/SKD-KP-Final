@@ -26,7 +26,7 @@ public class Monitor : MonoBehaviour
         MonitorManager.OnFrescoChanged -= DisplayImage;
     }
 
-    private void Start()
+    private void Awake()
     {
         monitorSetup = Resources.Load<MonitorSetup>("MonitorSetup");
 
@@ -34,7 +34,7 @@ public class Monitor : MonoBehaviour
 
         if (entry != null)
         {
-            images = new Sprite[] { entry.frescoImage1, entry.frescoImage2, entry.frescoImage3 };
+            images = new Sprite[] { entry.frescoImage1, entry.frescoImage2, entry.frescoImage3};
         }
      
     }
@@ -43,13 +43,21 @@ public class Monitor : MonoBehaviour
     {
         if(ID < images.Length && ID >= 0)
         {
-            displayArea.gameObject.SetActive(true);
-            Texture2D texture = images[ID].texture;
-            displayArea.material.mainTexture = texture; 
+            if (images[ID] != null)
+            {
+                displayArea.material.color = Color.white;
+                displayArea.material.mainTexture = images[ID].texture;
+            }
+            else
+            {
+                Debug.LogError("there is no image set for this fresco id for at least one monitor");
+            }
+           
         }
         else
         {
-            displayArea.gameObject.SetActive(false);
+            displayArea.material.mainTexture = null;
+            displayArea.material.color = Color.black;
         }
     }
 }

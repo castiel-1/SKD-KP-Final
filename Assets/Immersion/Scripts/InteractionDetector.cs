@@ -2,22 +2,31 @@ using UnityEngine;
 
 public class InteractionDetector : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private void OnTriggerEnter(Collider collider)
     {
-        
+        GameObject go = collider.gameObject;
+
+        switch (go.name)
+        {
+            case "fresco0":
+                MonitorManager.ChangeFrescoTo(0);
+                break;
+            case "fresco1":
+                MonitorManager.ChangeFrescoTo(1);
+                break;
+            case "fresco2":
+                MonitorManager.ChangeFrescoTo(2);
+                break;
+            default:
+                MonitorManager.ChangeFrescoTo(-1);
+                break;
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerExit(Collider collider)
     {
-        GameObject go = collision.gameObject;
-
-        /*
-        if (go.layer == LayerMask.NameToLayer("InteractionTrigger"))
-        {
-            int id = go.GetComponent
-            MonitorManager.ChangeFrescoTo(ID);
-        }*/
+        MonitorManager.ChangeFrescoTo(-1);
     }
 
     
