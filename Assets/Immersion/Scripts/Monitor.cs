@@ -36,7 +36,9 @@ public class Monitor : MonoBehaviour
         {
             images = new Sprite[] { entry.frescoImage1, entry.frescoImage2, entry.frescoImage3};
         }
-     
+
+        // set colour to black because the monitors are empty in the beginning
+        DisplayImage(-1);
     }
 
     private void DisplayImage(int ID)

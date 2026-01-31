@@ -14,62 +14,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entries:
   - MonitorID: 0
-    frescoImage1: {fileID: 2800000, guid: f4070908a2b1498418b23a85accfcd52, type: 3}
-    frescoImage2: {fileID: 0}
-    frescoImage3: {fileID: 0}
+    frescoImage1: {fileID: 21300000, guid: 7c325b8b188c9c243a705087b5957c59, type: 3}
+    frescoImage2: {fileID: 21300000, guid: 80ad9d5c9f0933146a987d7eeae70273, type: 3}
+    frescoImage3: {fileID: 21300000, guid: 1b9c66c748457974a92f2e9d5721d056, type: 3}
   - MonitorID: 1
-    frescoImage1: {fileID: 0}
-    frescoImage2: {fileID: 0}
-    frescoImage3: {fileID: 0}
+    frescoImage1: {fileID: 21300000, guid: 2d51a36838a936b40a491a4fe0818834, type: 3}
+    frescoImage2: {fileID: 21300000, guid: 5fd5defc0fb9fcd40815887982fde098, type: 3}
+    frescoImage3: {fileID: 21300000, guid: 0e046a3cabed80843817b9f4ecdc831a, type: 3}
   - MonitorID: 2
-    frescoImage1: {fileID: 21300000, guid: 5ea93b89f4a70ea408c50c8efe622765, type: 3}
-    frescoImage2: {fileID: 0}
-    frescoImage3: {fileID: 0}
+    frescoImage1: {fileID: 21300000, guid: 4ebc30292f83b264e8862ecc276d7e35, type: 3}
+    frescoImage2: {fileID: 21300000, guid: 6e223613216dc2d40836b3db03ef8b58, type: 3}
+    frescoImage3: {fileID: 21300000, guid: b5833d799a9d14649a065e9120e66bc7, type: 3}
   - MonitorID: 3
-    frescoImage1: {fileID: 21300000, guid: f4070908a2b1498418b23a85accfcd52, type: 3}
-    frescoImage2: {fileID: 0}
-    frescoImage3: {fileID: 0}
+    frescoImage1: {fileID: 21300000, guid: 8e2e06c14f8949a4a9fe245611bf2928, type: 3}
+    frescoImage2: {fileID: 21300000, guid: 341d4c67ac2a23e418de675c611b5a0c, type: 3}
+    frescoImage3: {fileID: 21300000, guid: 94af9e6cd482344409487eaf0b48e11c, type: 3}
   - MonitorID: 4
-    frescoImage1: {fileID: 0}
-    frescoImage2: {fileID: 0}
-    frescoImage3: {fileID: 0}
+    frescoImage1: {fileID: 21300000, guid: 3e71943e780cc3d469f05365201d1f87, type: 3}
+    frescoImage2: {fileID: 21300000, guid: 682dffd50f03b4e4ca5a327f489f48da, type: 3}
+    frescoImage3: {fileID: 21300000, guid: c8c32dc1bae36f04285ea5e2e1b54d73, type: 3}
   - MonitorID: 5
-    frescoImage1: {fileID: 21300000, guid: 04691576c298f2342b1f334bdb882b7f, type: 3}
-    frescoImage2: {fileID: 0}
-    frescoImage3: {fileID: 0}
+    frescoImage1: {fileID: 21300000, guid: 21f1a2eba9f509648bb10c0792be0f91, type: 3}
+    frescoImage2: {fileID: 21300000, guid: 17ff57a57f0c17544aa4022b2cb368f9, type: 3}
+    frescoImage3: {fileID: 21300000, guid: e142099b128d2294f8a3a236d6a1ebb0, type: 3}
   - MonitorID: 6
-    frescoImage1: {fileID: 21300000, guid: d7f79facdc859df42aa3034c60b1e0db, type: 3}
-    frescoImage2: {fileID: 0}
-    frescoImage3: {fileID: 0}
+    frescoImage1: {fileID: 21300000, guid: 4ce34f6bc298aa34bb041d0a8c5372cc, type: 3}
+    frescoImage2: {fileID: 21300000, guid: 31405e0443c119749b208703f87b756c, type: 3}
+    frescoImage3: {fileID: 21300000, guid: d326ccfdaa6de3341b50cc9cfdc678f8, type: 3}
   - MonitorID: 7
-    frescoImage1: {fileID: 21300000, guid: d090592e0d1396846a9b41d1ab46713f, type: 3}
-    frescoImage2: {fileID: 0}
-    frescoImage3: {fileID: 0}
+    frescoImage1: {fileID: 21300000, guid: 2e82bf8cc5d988a4998397761ede8244, type: 3}
+    frescoImage2: {fileID: 21300000, guid: d24e74ab314724f42ade6e9f4948be46, type: 3}
+    frescoImage3: {fileID: 21300000, guid: 76817762d69afa344bdb04d281464518, type: 3}
   - MonitorID: 8
-    frescoImage1: {fileID: 0}
-    frescoImage2: {fileID: 0}
-    frescoImage3: {fileID: 0}
+    frescoImage1: {fileID: 21300000, guid: 99dcfcde463cef041905fe19c3a0b8f9, type: 3}
+    frescoImage2: {fileID: 21300000, guid: 6cc5a966c6dc2b742b92fc5f86822ffa, type: 3}
+    frescoImage3: {fileID: 21300000, guid: 510bc837237621e4eb9f9bfaee356dbe, type: 3}
   - MonitorID: 9
-    frescoImage1: {fileID: 21300000, guid: 6e2baa003dac41a4d8daa36ae7e0bf86, type: 3}
-    frescoImage2: {fileID: 0}
-    frescoImage3: {fileID: 0}
+    frescoImage1: {fileID: 21300000, guid: 145f16514d586af4591c27a87ba48ca0, type: 3}
+    frescoImage2: {fileID: 21300000, guid: 08ac24a3246961c45ac6c55878cb3e64, type: 3}
+    frescoImage3: {fileID: 21300000, guid: bb255fc0ffc83a842b9a843c9c3aaa87, type: 3}
   - MonitorID: 10
-    frescoImage1: {fileID: 0}
-    frescoImage2: {fileID: 0}
-    frescoImage3: {fileID: 0}
+    frescoImage1: {fileID: 21300000, guid: af2c28d4636a8d54bbe6813cf557c614, type: 3}
+    frescoImage2: {fileID: 21300000, guid: 97baaf100f42af94589b70de5f3dec61, type: 3}
+    frescoImage3: {fileID: 21300000, guid: b2ee26b84a2af4d4a8d37c5c01d87761, type: 3}
   - MonitorID: 11
-    frescoImage1: {fileID: 21300000, guid: fe700168b6e02d049962c53b836226b1, type: 3}
-    frescoImage2: {fileID: 0}
-    frescoImage3: {fileID: 0}
+    frescoImage1: {fileID: 21300000, guid: 1521475a9fabc0344811b60abf88b597, type: 3}
+    frescoImage2: {fileID: 21300000, guid: 5cc56712b5aeb334ab0cdf61363bde35, type: 3}
+    frescoImage3: {fileID: 21300000, guid: 8dc1b66c35877e84c8f6693b2d8ab033, type: 3}
   - MonitorID: 12
-    frescoImage1: {fileID: 21300000, guid: 2c8ab2bfe853a51459f464af2b6fb165, type: 3}
-    frescoImage2: {fileID: 0}
-    frescoImage3: {fileID: 0}
+    frescoImage1: {fileID: 21300000, guid: 0e126aac6ecc71641bf90046a0721e3f, type: 3}
+    frescoImage2: {fileID: 21300000, guid: e8368e334a587d04898affb4578906cd, type: 3}
+    frescoImage3: {fileID: 21300000, guid: 144b6e905a5537f4b9614aa9078a93a2, type: 3}
   - MonitorID: 13
-    frescoImage1: {fileID: 2800000, guid: f4070908a2b1498418b23a85accfcd52, type: 3}
-    frescoImage2: {fileID: 0}
-    frescoImage3: {fileID: 0}
+    frescoImage1: {fileID: 21300000, guid: 5b81dc8a238984b4789a340cf0849af9, type: 3}
+    frescoImage2: {fileID: 21300000, guid: a4f92973e39c11948b5be06b974aeef0, type: 3}
+    frescoImage3: {fileID: 21300000, guid: 24da28d10ebd3e14e9f44890764c5f1b, type: 3}
   - MonitorID: 14
-    frescoImage1: {fileID: 21300000, guid: cd996e5979ee9bb409881b7f81ad4a5b, type: 3}
-    frescoImage2: {fileID: 0}
-    frescoImage3: {fileID: 0}
+    frescoImage1: {fileID: 21300000, guid: 383ed8ad73bda144db6af281407b3630, type: 3}
+    frescoImage2: {fileID: 21300000, guid: 7021053b6c4c38142bf4a2953ec3c4fa, type: 3}
+    frescoImage3: {fileID: 21300000, guid: 55607e6bc8d382047a65a64e7ce5a083, type: 3}
